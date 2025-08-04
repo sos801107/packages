@@ -148,3 +148,4 @@ endef
 
 $(eval $(call GoBinPackage,sing-box))
 $(eval $(call BuildPackage,sing-box))
+
