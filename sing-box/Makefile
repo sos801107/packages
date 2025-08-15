@@ -5,7 +5,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=sing-box
-PKG_VERSION:=v1.13.0-alpha.1
+PKG_VERSION:=1.12.1
 PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
@@ -132,4 +132,5 @@ endef
 
 $(eval $(call GoBinPackage,sing-box))
 $(eval $(call BuildPackage,sing-box))
+
 
