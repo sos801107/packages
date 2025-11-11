@@ -9,7 +9,7 @@ PKG_VERSION:=2.1
 PKG_RELEASE:=2
 
 PKG_SOURCE:=SourceCode.zip
-PKG_SOURCE_URL:=@SF/dns2socks
+PKG_SOURCE_URL:=https://github.com/xiaorouji/openwrt-passwall-packages/releases/download/dns2socks
 PKG_SOURCE_DATE:=2020-02-18
 PKG_HASH:=406b5003523577d39da66767adfe54f7af9b701374363729386f32f6a3a995f4
 
@@ -26,7 +26,7 @@ define Package/dns2socks
   CATEGORY:=Network
   SUBMENU:=IP Addresses and Names
   TITLE:=DNS to SOCKS or HTTP proxy
-  URL:=https://sourceforge.net/projects/dns2socks/
+  URL:=http://dns2socks.sourceforge.net/
   DEPENDS:=+libpthread
 endef
 
