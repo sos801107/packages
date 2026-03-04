@@ -84,26 +84,13 @@ define Host/Uninstall
 		$(BASH) $(RUST_UNINSTALL) || echo No Uninstall
 endef
 
-define Host/Patch
-	$(if $(HOST_QUILT),rm -rf $(HOST_BUILD_DIR)/patches; mkdir -p $(HOST_BUILD_DIR)/patches)
-	$(if $(HOST_QUILT),$(call PatchDir/Quilt,$(HOST_BUILD_DIR),$(HOST_PATCH_DIR),))
-	$(if $(HOST_QUILT),touch $(HOST_BUILD_DIR)/.quilt_used)
-	$(if $(HOST_QUILT),,$(if $(wildcard $(HOST_PATCH_DIR)/*.patch), \
-		$(foreach p,$(sort $(wildcard $(HOST_PATCH_DIR)/*.patch)), \
-			echo "Applying patch $(notdir $p)" ; \
-			$(PATCH) -f -p1 -d $(HOST_BUILD_DIR) < $p || \
-			{ echo "Patch failed! Please fix: $(notdir $p)!" ; exit 1 ; } ; \
-		) \
-	))
-endef
-
 define Host/Compile
 	$(RUST_SCCACHE_VARS) \
 	CARGO_HOME=$(CARGO_HOME) \
 	TARGET_CFLAGS="$(TARGET_CFLAGS)" \
 	$(PYTHON) $(HOST_BUILD_DIR)/x.py \
-		--build-dir $(HOST_BUILD_DIR)/build \
 		--ci false \
+		--build-dir $(HOST_BUILD_DIR)/build \
 		dist build-manifest rustc rust-std cargo llvm-tools rust-src
 endef
 
