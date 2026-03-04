@@ -1,0 +1,4 @@
+# In feeds/packages/lang/rust/config.toml
+[llvm]
+-download-ci-llvm = true
++download-ci-llvm = "if-unchanged"
